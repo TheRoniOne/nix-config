@@ -26,6 +26,7 @@
                 # unless their parent is mounted
                 subvolumes = {
                   "/" = {
+                    mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
                     mountpoint = "/";
                   };
                   # Subvolume name is the same as the mountpoint
@@ -37,12 +38,12 @@
                   "/home/user" = { };
                   # Parent is not mounted so the mountpoint must be set
                   "/nix" = {
-                    mountOptions = [ "compress=zstd" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
+                    mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
                     mountpoint = "/nix";
                   };
                 };
-                mountOptions = [ "compress=zstd" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
-                mountpoint = "/partition-root";
+                mountOptions = [ "compress=zstd:1" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
+                mountpoint = "/";
               };
             };
 
