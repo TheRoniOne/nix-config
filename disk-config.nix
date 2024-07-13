@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      vdb = {
+      my-disk = {
         type = "disk";
-        device = "/dev/disk/by-diskseq/1";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -41,6 +41,7 @@
                     mountpoint = "/nix";
                   };
                 };
+                mountOptions = [ "compress=zstd" "noatime" "ssd" "space_cache=v2" "discard=async" "commit=120" ];
                 mountpoint = "/partition-root";
               };
             };
