@@ -31,12 +31,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
  
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false;
+  services.xserver.enable = true;
  
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+ 
+  # Configure keymap in X11
+  services.xserver.xkb.variant = ""; 
+  services.xserver.xkb.layout = "us";
  
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -63,10 +66,9 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.roni = {
     isNormalUser = true;
-    description = "Roni";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "roni";
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
@@ -80,9 +82,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-  #  wget
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git  
+   #  wget
   ];
  
   # Some programs need SUID wrappers, can be configured further or are
@@ -113,4 +115,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
  
 }
- 
