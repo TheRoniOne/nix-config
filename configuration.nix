@@ -35,7 +35,7 @@
   services.xserver.enable = false;
  
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
  
   # Enable CUPS to print documents.
