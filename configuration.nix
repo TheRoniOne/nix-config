@@ -35,7 +35,7 @@
   services.xserver.enable = false;
  
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.wayland.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
  
   # Enable CUPS to print documents.
@@ -80,7 +80,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
  
